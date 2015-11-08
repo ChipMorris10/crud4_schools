@@ -41,7 +41,7 @@ router.post('/schools', function (req, res, next) {
 });
 
 // ** PUT (Update) ONE school ** //
-router.put('/schools', function (req, res, next) {
+router.put('/school/:id', function (req, res, next) {
     var update = {
         name:req.body.name,
         coed:req.body.coed,
@@ -57,8 +57,8 @@ router.put('/schools', function (req, res, next) {
 });
 
 // ** DELETE SINGLE school ** //
-router.delete('/schools', function (req, res, next) {
-    School.findByIdAndRemove(req.params.id, function(err, school) {
+router.delete('/school/:id', function (req, res, next) {
+    School.findByIdAndRemove(req.params.id, function(err, schoolData) {
         if (err) {
             res.json({'message': err});
         } else {
